@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Data Structures",
+    "category": "Data Structures",
+    "content": "Data structures are ways of organizing and storing data so that it can be accessed and modified efficiently. Common data structures include arrays, linked lists, stacks, queues, trees, graphs and hash tables. Choosing the right data structure is one of the most important decisions in software design, because it directly affects the speed and memory usage of a program. Every efficient algorithm depends on a suitable data structure.",
+    "source": "CS Fundamentals Notes"
+  },
+  {
+    "id": 2,
+    "title": "Arrays and Linked Lists Compared",
+    "category": "Data Structures",
+    "content": "An array stores elements in contiguous memory, which gives constant time access by index but makes insertion in the middle expensive. A linked list stores elements in separate nodes connected by pointers, so insertion and deletion are fast when the position is known, but reaching the nth element requires traversing the list. Arrays are better for random access, while linked lists suit situations with frequent insertions and deletions.",
+    "source": "CS Fundamentals Notes"
+  },
+  {
+    "id": 3,
+    "title": "Hash Tables and Hashing",
+    "category": "Data Structures",
+    "content": "A hash table maps keys to values using a hash function that converts a key into an array index. On average, insertion, search and deletion take constant time, which makes hash tables ideal for fast lookup. When two keys produce the same index a collision occurs, and it is handled by chaining or open addressing. In the worst case, many collisions can degrade performance to linear time.",
+    "source": "CS Fundamentals Notes"
+  },
+  {
+    "id": 4,
+    "title": "Trees, Tries and Prefix Search",
+    "category": "Data Structures",
+    "content": "A tree is a hierarchical data structure made of nodes connected by edges. A trie, also called a prefix tree, stores strings character by character so that words sharing a prefix share a path. Tries make autocomplete efficient because finding every word that starts with a given prefix only requires walking down the tree. Insertion and search in a trie take time proportional to the length of the word.",
+    "source": "CS Fundamentals Notes"
+  },
+  {
+    "id": 5,
+    "title": "Sorting Algorithms Explained",
+    "category": "Algorithms",
+    "content": "Sorting algorithms arrange elements in a defined order such as ascending or descending. Bubble sort and insertion sort are simple but take quadratic time on large inputs. Merge sort and quick sort are faster, with average time complexity of n log n. Merge sort is stable and guarantees n log n time in every case, while quick sort is often faster in practice but can degrade in the worst case.",
+    "source": "Algorithm Handbook"
+  },
+  {
+    "id": 6,
+    "title": "Searching Algorithms: Linear and Binary Search",
+    "category": "Algorithms",
+    "content": "Linear search checks every element one by one and takes linear time. Binary search works on sorted data by repeatedly halving the search range, giving logarithmic time complexity. Binary search is far faster on large collections but requires the data to be sorted first. Choosing between searching algorithms depends on whether the data is sorted and how often it will be searched.",
+    "source": "Algorithm Handbook"
+  },
+  {
+    "id": 7,
+    "title": "Time and Space Complexity Analysis",
+    "category": "Algorithms",
+    "content": "Algorithm analysis measures how the running time and memory usage of an algorithm grow with the size of the input. Big O notation describes the upper bound of growth, for example constant, logarithmic, linear, n log n and quadratic. Analyzing complexity helps programmers compare algorithms before writing code. Time complexity measures steps taken, while space complexity measures extra memory needed.",
+    "source": "Algorithm Handbook"
+  },
+  {
+    "id": 8,
+    "title": "Graph Algorithms: BFS and DFS",
+    "category": "Algorithms",
+    "content": "Graph algorithms solve problems on networks of nodes and edges. Breadth first search explores a graph level by level using a queue, and it finds the shortest path in an unweighted graph. Depth first search goes as deep as possible before backtracking, using a stack or recursion. These algorithmic techniques are used in route planning, social networks and web crawling.",
+    "source": "Algorithm Handbook"
+  },
+  {
+    "id": 9,
+    "title": "What Is Artificial Intelligence?",
+    "category": "Artificial Intelligence",
+    "content": "Artificial intelligence is the field of computer science concerned with building systems that perform tasks normally requiring human intelligence, such as reasoning, perception, language understanding and decision making. Modern artificial intelligence includes machine learning, natural language processing, computer vision and robotics. Applications range from voice assistants and recommendation systems to medical diagnosis and self driving vehicles.",
+    "source": "AI Primer"
+  },
+  {
+    "id": 10,
+    "title": "Search Strategies in Artificial Intelligence",
+    "category": "Artificial Intelligence",
+    "content": "Many artificial intelligence problems are solved by searching through a space of possible states. Uninformed strategies such as breadth first search and depth first search explore blindly, while informed strategies like A star use a heuristic to estimate how close a state is to the goal. A good heuristic reduces the number of states explored and makes problem solving much faster.",
+    "source": "AI Primer"
+  },
+  {
+    "id": 11,
+    "title": "Natural Language Processing Basics",
+    "category": "Artificial Intelligence",
+    "content": "Natural language processing allows computers to understand and generate human language. Typical steps include tokenization, removing stop words, stemming and part of speech tagging. Search engines use similar text processing to normalize queries and documents before matching them. Language models and chatbots build on these ideas to answer questions and summarize text.",
+    "source": "AI Primer"
+  },
+  {
+    "id": 12,
+    "title": "Introduction to Machine Learning",
+    "category": "Machine Learning",
+    "content": "Machine learning is a branch of artificial intelligence in which computers learn patterns from data instead of following explicitly programmed rules. A machine learning model is trained on examples and then makes predictions on new data. The main types are supervised learning, unsupervised learning and reinforcement learning. Machine learning powers spam filters, recommendation engines and image recognition.",
+    "source": "ML Study Guide"
+  },
+  {
+    "id": 13,
+    "title": "Supervised Learning: Regression and Classification",
+    "category": "Machine Learning",
+    "content": "In supervised learning each training example comes with a label. Regression predicts a continuous value such as a house price, while classification predicts a category such as spam or not spam. Common algorithms include linear regression, decision trees and support vector machines. The quality of the model is measured on test data that it has never seen during training.",
+    "source": "ML Study Guide"
+  },
+  {
+    "id": 14,
+    "title": "Neural Networks and Deep Learning",
+    "category": "Machine Learning",
+    "content": "A neural network is made of layers of connected units called neurons. Each connection has a weight that is adjusted during training using gradient descent and backpropagation. Deep learning uses networks with many layers to learn complex features from images, audio and text. Training deep models needs large datasets and significant computing power.",
+    "source": "ML Study Guide"
+  },
+  {
+    "id": 15,
+    "title": "Introduction to Database Management Systems",
+    "category": "Database Management",
+    "content": "A database management system is software that stores, organizes and retrieves data for applications. It provides data security, backup, concurrent access and consistency. Relational databases store data in tables of rows and columns, and they are queried with SQL. A good database design avoids redundancy and keeps data accurate across the whole application.",
+    "source": "Database Lecture Notes"
+  },
+  {
+    "id": 16,
+    "title": "SQL Queries and Joins",
+    "category": "Database Management",
+    "content": "Structured Query Language is used to create, read, update and delete data in a relational database. A select query retrieves rows that match a condition, and a join combines rows from two or more tables using a related column. Inner join returns only matching rows, while left join keeps every row from the left table. Writing efficient queries is a key database skill.",
+    "source": "Database Lecture Notes"
+  },
+  {
+    "id": 17,
+    "title": "Database Indexing and B-Trees",
+    "category": "Database Management",
+    "content": "A database index is a data structure that speeds up searching on a column, just like the index at the back of a book. Most relational databases implement indexes using B trees, which keep data sorted and allow search, insertion and deletion in logarithmic time. Without an index the database must scan every row. The trade off is extra storage and slower writes.",
+    "source": "Database Lecture Notes"
+  },
+  {
+    "id": 18,
+    "title": "Operating System Fundamentals",
+    "category": "Operating Systems",
+    "content": "An operating system manages computer hardware and provides services for application programs. Its main responsibilities are process management, memory management, file system management and device control. The kernel is the core of the operating system and runs with full privileges. Popular operating systems include Linux, Windows and macOS.",
+    "source": "OS Course Material"
+  },
+  {
+    "id": 19,
+    "title": "Process Scheduling Algorithms",
+    "category": "Operating Systems",
+    "content": "The scheduler decides which process runs on the processor next. First come first served is simple but can make short processes wait. Shortest job first minimizes average waiting time, and round robin gives each process a fixed time slice so that every process makes progress. Scheduling algorithms balance throughput, fairness and response time.",
+    "source": "OS Course Material"
+  },
+  {
+    "id": 20,
+    "title": "Virtual Memory and Paging",
+    "category": "Operating Systems",
+    "content": "Virtual memory lets a computer run programs larger than its physical memory by storing parts of them on disk. Memory is divided into fixed size pages, and a page table maps virtual addresses to physical frames. When a needed page is not in memory a page fault occurs and the operating system loads it. Page replacement algorithms such as least recently used decide which page to remove.",
+    "source": "OS Course Material"
+  },
+  {
+    "id": 21,
+    "title": "Computer Networks and the OSI Model",
+    "category": "Computer Networks",
+    "content": "A computer network connects devices so that they can share data and resources. The OSI model describes networking in seven layers: physical, data link, network, transport, session, presentation and application. Each layer has a specific responsibility and communicates with the layers above and below it. Layered design makes network protocols easier to develop and troubleshoot.",
+    "source": "Networking Basics"
+  },
+  {
+    "id": 22,
+    "title": "TCP, UDP and IP Addressing",
+    "category": "Computer Networks",
+    "content": "The Internet Protocol assigns an address to every device and routes packets across networks. TCP provides reliable, ordered delivery by using acknowledgements and retransmission, which suits web pages and email. UDP is faster but does not guarantee delivery, so it is used for video streaming and online games. Understanding these transport protocols is essential for network programming.",
+    "source": "Networking Basics"
+  },
+  {
+    "id": 23,
+    "title": "How DNS and HTTP Work Together",
+    "category": "Computer Networks",
+    "content": "When you type a website address, the Domain Name System translates the name into an IP address. The browser then sends an HTTP request to the web server, which replies with the page content. HTTPS adds encryption so that the data cannot be read in transit. DNS works like a distributed phone book, and caching makes repeated lookups fast.",
+    "source": "Networking Basics"
+  },
+  {
+    "id": 24,
+    "title": "Fundamentals of Web Development",
+    "category": "Web Development",
+    "content": "Web development combines HTML for structure, CSS for styling and JavaScript for behavior. The frontend runs in the browser and handles the user interface, while the backend runs on a server and handles data, logic and security. A modern web application usually communicates through an API that exchanges JSON. Responsive design makes a website work on both phones and desktops.",
+    "source": "Web Dev Guide"
+  },
+  {
+    "id": 25,
+    "title": "Building REST APIs with Node.js and Express",
+    "category": "Web Development",
+    "content": "A REST API exposes resources through URLs and uses HTTP methods such as GET, POST, PUT and DELETE. Node.js lets developers write server code in JavaScript, and Express is a lightweight framework that simplifies routing and middleware. A well designed API returns clear status codes and consistent JSON. Separating routes, controllers and services keeps a backend easy to maintain.",
+    "source": "Web Dev Guide"
+  },
+  {
+    "id": 26,
+    "title": "React and Component-Based Interfaces",
+    "category": "Web Development",
+    "content": "React is a JavaScript library for building user interfaces from small reusable components. Each component manages its own state and describes how it should look for that state. When the state changes, React updates only the parts of the page that need to change. Using TypeScript with React catches many mistakes before the application runs.",
+    "source": "Web Dev Guide"
+  },
+  {
+    "id": 27,
+    "title": "Introduction to Cyber Security",
+    "category": "Cyber Security",
+    "content": "Cyber security is the practice of protecting systems, networks and data from digital attacks. Its goals are often summarized as confidentiality, integrity and availability. Common threats include malware, phishing, ransomware and denial of service attacks. Strong passwords, regular updates and user awareness are the first line of defense for any organization.",
+    "source": "Security Awareness Series"
+  },
+  {
+    "id": 28,
+    "title": "Cryptography and Encryption Basics",
+    "category": "Cyber Security",
+    "content": "Cryptography protects information by converting readable data into an unreadable form. Symmetric encryption uses a single shared key, while asymmetric encryption uses a public key and a private key. Hash functions create a fixed size fingerprint of data and are used to store passwords and verify integrity. Digital signatures prove who sent a message and that it was not altered.",
+    "source": "Security Awareness Series"
+  },
+  {
+    "id": 29,
+    "title": "Web Application Security: Injection and XSS",
+    "category": "Cyber Security",
+    "content": "SQL injection happens when user input is placed directly into a database query, letting an attacker run unintended commands. Cross site scripting injects malicious scripts into pages viewed by other users. Developers prevent these attacks by validating input, using parameterized queries and escaping output. Secure coding habits matter as much as network security tools.",
+    "source": "Security Awareness Series"
+  },
+  {
+    "id": 30,
+    "title": "Cloud Computing Concepts",
+    "category": "Cloud Computing",
+    "content": "Cloud computing delivers computing resources such as servers, storage and databases over the internet on a pay as you use basis. The main service models are infrastructure as a service, platform as a service and software as a service. Cloud computing offers scalability, flexibility and lower upfront cost. Public, private and hybrid clouds differ in who owns and controls the infrastructure.",
+    "source": "Cloud Technology Notes"
+  },
+  {
+    "id": 31,
+    "title": "Virtualization and Containers",
+    "category": "Cloud Computing",
+    "content": "Virtualization allows one physical machine to run several isolated virtual machines, each with its own operating system. Containers are lighter because they share the host kernel while keeping applications isolated. Docker packages an application with its dependencies so that it runs the same everywhere. Container orchestration tools manage many containers across a cluster of servers.",
+    "source": "Cloud Technology Notes"
+  },
+  {
+    "id": 32,
+    "title": "Scalability and Load Balancing in the Cloud",
+    "category": "Cloud Computing",
+    "content": "Scalability is the ability of a system to handle growing demand. Vertical scaling adds power to one machine, while horizontal scaling adds more machines. A load balancer distributes incoming requests across servers so that no single server is overloaded. Cloud platforms can scale automatically, adding servers during busy periods and removing them afterwards to save cost.",
+    "source": "Cloud Technology Notes"
+  },
+  {
+    "id": 33,
+    "title": "Software Engineering and the Development Life Cycle",
+    "category": "Software Engineering",
+    "content": "Software engineering applies engineering principles to the design, development, testing and maintenance of software. The software development life cycle includes requirements analysis, design, implementation, testing, deployment and maintenance. Models such as waterfall and agile organize these phases differently. Good engineering practice produces software that is reliable, maintainable and meets user needs.",
+    "source": "Software Engineering Course Notes"
+  },
+  {
+    "id": 34,
+    "title": "Agile Methodology and Scrum",
+    "category": "Software Engineering",
+    "content": "Agile development delivers software in short iterations and welcomes changing requirements. Scrum is a popular agile framework where a team works in sprints, holds daily stand up meetings and reviews progress at the end of each sprint. The product backlog lists the features to build, ordered by priority. Frequent feedback helps the team build the right product.",
+    "source": "Software Engineering Course Notes"
+  },
+  {
+    "id": 35,
+    "title": "Software Testing and Version Control",
+    "category": "Software Engineering",
+    "content": "Software testing checks that a program behaves correctly. Unit tests verify small pieces of code, integration tests check that parts work together, and system tests validate the whole application. Version control tools such as Git record every change, allow teams to work in parallel on branches and make it possible to return to an earlier version. Testing and version control are habits of every professional developer.",
+    "source": "Software Engineering Course Notes"
+  },
+  {
+    "id": 36,
+    "title": "Computer Architecture: CPU, Memory and Cache",
+    "category": "Computer Architecture",
+    "content": "Computer architecture describes how the parts of a computer are organized and work together. The central processing unit fetches, decodes and executes instructions, using registers for the fastest storage. Memory is arranged as a hierarchy: registers, cache, main memory and disk, with speed decreasing and size increasing at each level. A cache stores recently used data so the processor waits less for memory.",
+    "source": "Computer Architecture Notes"
+  }
+]
