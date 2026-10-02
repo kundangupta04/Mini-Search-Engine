@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "test:text": "tsx src/scripts/testTextProcessor.ts",
-    "test:trie": "tsx src/scripts/testTrie.ts"
+    "test:trie": "tsx src/scripts/testTrie.ts",
+    "test:index": "tsx src/scripts/testInvertedIndex.ts"
   }
 }

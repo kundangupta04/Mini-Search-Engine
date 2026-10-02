@@ -19,3 +19,13 @@ export interface ProcessedToken {
   term: string;     // normalized word after stemming, e.g. "algorithm" (for the index)
   position: number; // index in the original token list (for phrase search)
 }
+
+/**
+ * One entry in a term's postings: "this term occurs in this document".
+ */
+export interface Posting {
+  docId: number;       // which document
+  frequency: number;   // how many times the term appears (title + content)
+  positions: number[]; // where it appears, ascending (for phrase search)
+  inTitle: boolean;    // does the term appear in the title? (ranking bonus)
+}
