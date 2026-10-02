@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 
 const NAV_ITEMS = [
   { to: "/", label: "Home", end: true },
+  { to: "/visualizer", label: "Visualizer", end: false },
   { to: "/dsa", label: "DSA Dashboard", end: false },
   { to: "/statistics", label: "Statistics", end: false },
 ];
@@ -16,7 +17,7 @@ export default function Layout() {
             <Search className="h-6 w-6 text-indigo-600" />
             Mini Search Engine
           </Link>
-          <nav className="flex gap-1 text-sm">
+          <nav className="flex flex-wrap gap-1 text-sm">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.to}

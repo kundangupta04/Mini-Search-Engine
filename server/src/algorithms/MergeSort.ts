@@ -22,18 +22,50 @@ export interface SortStats {
   comparisons: number;
 }
 
-/** Returns a NEW sorted array. The input array is never modified. */
-export function mergeSort<T>(items: readonly T[], compare: Comparator<T>, stats?: SortStats): T[] {
+/**
+ * One merge, recorded for the visualizer.
+ * depth 0 is the final merge; larger depths happen earlier, on smaller pieces.
+ */
+export interface MergeStep<T> {
+  depth: number;
+  left: T[];
+  right: T[];
+  merged: T[];
+}
+
+/**
+ * Returns a NEW sorted array. The input array is never modified.
+ * Pass `trace` (an empty array) to have every merge recorded in the order it happened.
+ * When `trace` is omitted, nothing is recorded and there is no extra cost.
+ */
+export function mergeSort<T>(
+  items: readonly T[],
+  compare: Comparator<T>,
+  stats?: SortStats,
+  trace?: MergeStep<T>[]
+): T[] {
+  return sortRecursive(items, compare, 0, stats, trace);
+}
+
+function sortRecursive<T>(
+  items: readonly T[],
+  compare: Comparator<T>,
+  depth: number,
+  stats?: SortStats,
+  trace?: MergeStep<T>[]
+): T[] {
   // Base case: 0 or 1 items are already sorted.
   if (items.length <= 1) return items.slice();
 
   // 1. Split
   const middle = Math.floor(items.length / 2);
-  const left = mergeSort(items.slice(0, middle), compare, stats);
-  const right = mergeSort(items.slice(middle), compare, stats);
+  const left = sortRecursive(items.slice(0, middle), compare, depth + 1, stats, trace);
+  const right = sortRecursive(items.slice(middle), compare, depth + 1, stats, trace);
 
   // 3. Merge
-  return merge(left, right, compare, stats);
+  const merged = merge(left, right, compare, stats);
+  if (trace) trace.push({ depth, left, right, merged });
+  return merged;
 }
 
 /**

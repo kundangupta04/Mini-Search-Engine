@@ -5,6 +5,7 @@ import ResultsPage from "./pages/ResultsPage";
 import DocumentPage from "./pages/DocumentPage";
 import DsaDashboardPage from "./pages/DsaDashboardPage";
 import StatisticsPage from "./pages/StatisticsPage";
+import VisualizerPage from "./pages/VisualizerPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="search" element={<ResultsPage />} />
         <Route path="document/:id" element={<DocumentPage />} />
+        <Route path="visualizer" element={<VisualizerPage />} />
         <Route path="dsa" element={<DsaDashboardPage />} />
         <Route path="statistics" element={<StatisticsPage />} />
         <Route path="*" element={<NotFoundPage />} />

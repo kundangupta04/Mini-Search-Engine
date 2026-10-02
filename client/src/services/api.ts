@@ -7,7 +7,7 @@ import type {
 } from "../types";
 
 /** Fetch JSON and turn server errors ({ error: "..." }) into a readable Error. */
-async function getJson<T>(url: string): Promise<T> {
+export async function getJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
 
   if (!response.ok) {

@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { mergeSort, SortStats } from "../algorithms/MergeSort";
+import { mergeSort, MergeStep, SortStats } from "../algorithms/MergeSort";
 
 const MAX_NUMBERS = 50;
 
 /**
  * GET /api/dsa/sort?numbers=5,2,9,1&order=asc
- * Sorts the numbers with our own Merge Sort and reports the comparisons made.
+ * Sorts the numbers with our own Merge Sort and reports the comparisons made
+ * and every merge step (for the visualizer).
  */
 export function sortDemo(req: Request, res: Response): void {
   const raw = req.query.numbers;
@@ -33,12 +34,14 @@ export function sortDemo(req: Request, res: Response): void {
 
   const order = req.query.order === "desc" ? "desc" : "asc";
   const stats: SortStats = { comparisons: 0 };
+  const steps: MergeStep<number>[] = [];
 
   const start = performance.now();
   const sorted = mergeSort(
     numbers,
     order === "desc" ? (a, b) => b - a : (a, b) => a - b,
-    stats
+    stats,
+    steps
   );
   const timeMs = performance.now() - start;
 
@@ -48,6 +51,7 @@ export function sortDemo(req: Request, res: Response): void {
     input: numbers,
     sorted,
     comparisons: stats.comparisons,
+    steps,
     timeMs: Number(timeMs.toFixed(3)),
   });
 }
