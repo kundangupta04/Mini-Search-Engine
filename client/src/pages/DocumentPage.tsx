@@ -36,7 +36,7 @@ export default function DocumentPage() {
 
     // Optional: if we came from a search, find this document's score in that search.
     if (query.trim() !== "") {
-      searchApi(query)
+      searchApi(query, { track: false })
         .then((response) => {
           if (!cancelled) setHit(response.results.find((r) => r.docId === docId) ?? null);
         })

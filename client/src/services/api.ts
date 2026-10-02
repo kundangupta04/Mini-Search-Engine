@@ -2,6 +2,7 @@ import type {
   DocumentData,
   HealthResponse,
   SearchResponse,
+  StatsResponse,
   SuggestionResponse,
 } from "../types";
 
@@ -22,8 +23,16 @@ async function getJson<T>(url: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export function searchApi(query: string): Promise<SearchResponse> {
-  return getJson(`/api/search?q=${encodeURIComponent(query)}`);
+/**
+ * Run a search. Pass { track: false } when the search is only a background lookup
+ * (for example the document page fetching a score), so it is not counted in the statistics.
+ */
+export function searchApi(
+  query: string,
+  options: { track?: boolean } = {}
+): Promise<SearchResponse> {
+  const trackPart = options.track === false ? "&track=false" : "";
+  return getJson(`/api/search?q=${encodeURIComponent(query)}${trackPart}`);
 }
 
 export function fetchSuggestions(query: string): Promise<SuggestionResponse> {
@@ -36,4 +45,13 @@ export function getDocument(id: number): Promise<{ document: DocumentData }> {
 
 export function getHealth(): Promise<HealthResponse> {
   return getJson("/api/health");
+}
+
+export function getStats(): Promise<StatsResponse> {
+  return getJson("/api/stats");
+}
+
+export async function resetStats(): Promise<void> {
+  const response = await fetch("/api/stats/reset", { method: "POST" });
+  if (!response.ok) throw new Error(`Request failed (${response.status})`);
 }

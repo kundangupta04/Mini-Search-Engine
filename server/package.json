@@ -12,6 +12,8 @@
     "test:index": "tsx src/scripts/testInvertedIndex.ts",
     "test:search": "tsx src/scripts/testSearch.ts",
     "test:sort": "tsx src/scripts/testMergeSort.ts",
-    "test:rank": "tsx src/scripts/testRanking.ts"
+    "test:rank": "tsx src/scripts/testRanking.ts",
+    "test:api": "tsx src/scripts/testApi.ts",
+    "test:all": "npm run test:text && npm run test:trie && npm run test:index && npm run test:search && npm run test:sort && npm run test:rank && npm run test:api"
   }
 }

@@ -82,3 +82,35 @@ export interface HealthResponse {
   };
   time: string;
 }
+
+export interface RecentSearch {
+  query: string;
+  timeMs: number;
+  resultCount: number;
+  at: string;
+}
+
+export interface StatsResponse {
+  documents: number;
+  trie: { wordCount: number; nodeCount: number };
+  index: {
+    documentCount: number;
+    termCount: number;
+    totalPostings: number;
+    totalTokens: number;
+    averageDocLength: number;
+    buildTimeMs: number;
+  };
+  search: {
+    startedAt: string;
+    totalSearches: number;
+    zeroResultSearches: number;
+    averageTimeMs: number;
+    minTimeMs: number | null;
+    maxTimeMs: number | null;
+    topQueries: { query: string; count: number }[];
+    topTerms: { term: string; count: number }[];
+    recentSearches: RecentSearch[]; // newest first
+    documentsPerCategory: { category: string; count: number }[];
+  };
+}

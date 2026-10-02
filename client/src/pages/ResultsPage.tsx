@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AlertCircle, Info, Loader2, SearchX } from "lucide-react";
 import SearchBar from "../components/SearchBar";
@@ -14,12 +14,19 @@ export default function ResultsPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Remembers which query was already counted in the statistics.
+  // (In development React StrictMode runs effects twice; this stops a double count.)
+  const lastTrackedQuery = useRef<string | null>(null);
+
   useEffect(() => {
     let cancelled = false; // ignore a reply that arrives after the query changed
+    const track = lastTrackedQuery.current !== query;
+    lastTrackedQuery.current = query;
+
     setLoading(true);
     setError(null);
 
-    searchApi(query)
+    searchApi(query, { track })
       .then((response) => {
         if (!cancelled) setData(response);
       })
