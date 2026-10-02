@@ -3,6 +3,7 @@ import cors from "cors";
 import documentRoutes from "./routes/documentRoutes";
 import dsaRoutes from "./routes/dsaRoutes";
 import suggestionRoutes from "./routes/suggestionRoutes";
+import searchRoutes from "./routes/searchRoutes";
 import { getDocumentCount } from "./services/documentService";
 import { getTrieStats } from "./services/trieService";
 import { getIndexStats } from "./services/invertedIndexService";
@@ -27,6 +28,7 @@ app.get("/api/health", (_req, res) => {
 app.use("/api/documents", documentRoutes);
 app.use("/api/dsa", dsaRoutes);
 app.use("/api/suggestions", suggestionRoutes);
+app.use("/api/search", searchRoutes);
 
 app.listen(PORT, () => {
   const trie = getTrieStats();

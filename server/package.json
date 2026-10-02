@@ -9,6 +9,7 @@
     "start": "node dist/server.js",
     "test:text": "tsx src/scripts/testTextProcessor.ts",
     "test:trie": "tsx src/scripts/testTrie.ts",
-    "test:index": "tsx src/scripts/testInvertedIndex.ts"
+    "test:index": "tsx src/scripts/testInvertedIndex.ts",
+    "test:search": "tsx src/scripts/testSearch.ts"
   }
 }
