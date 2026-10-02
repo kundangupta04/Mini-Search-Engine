@@ -66,6 +66,6 @@ export function getTrieStats(): { wordCount: number; nodeCount: number } {
  * Words in the vocabulary that start with `prefix` (original, unstemmed).
  * The search engine uses this for partial search ("algo") and "did you mean".
  */
-export function expandPrefix(prefix: string, limit = 20): string[] {
+export function expandPrefix(prefix: string, limit = 100): string[] {
   return trie.getSuggestions(prefix, limit).map((suggestion) => suggestion.word);
 }

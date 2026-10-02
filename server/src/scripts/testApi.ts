@@ -2,7 +2,7 @@ import type { Server } from "http";
 import type { AddressInfo } from "net";
 import app from "../app";
 import { getAllDocuments } from "../services/documentService";
-import { getTerms, preprocess } from "../utils/textProcessor";
+import { getTerms, preprocess, stem } from "../utils/textProcessor";
 
 let passed = 0;
 let failed = 0;
@@ -28,7 +28,7 @@ async function main(): Promise<void> {
   console.log("\nAPI end-to-end tests (real server, real engine)\n");
 
   // Start the REAL Express app on any free port.
-  const server: Server = await new Promise((resolve) => {
+  const server = await new Promise<Server>((resolve) => {
     const s = app.listen(0, () => resolve(s));
   });
   const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
