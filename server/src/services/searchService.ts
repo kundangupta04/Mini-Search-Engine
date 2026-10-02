@@ -1,4 +1,6 @@
 import { SearchEngine, SearchOutcome, SearchStatus, ResolvedTerm, PhraseMatch } from "../algorithms/Search";
+import { scoreCandidates, sortByScore, ScoreBreakdown } from "../algorithms/Ranking";
+import { SortStats } from "../algorithms/MergeSort";
 import { getInvertedIndex } from "./invertedIndexService";
 import { expandPrefix } from "./trieService";
 import { getDocumentById } from "./documentService";
@@ -12,10 +14,13 @@ const engine = new SearchEngine({
 });
 
 export interface SearchResultItem {
+  rank: number;                // 1 = best match
   docId: number;
   title: string;
   category: string;
   source: string;
+  score: number;               // relevance score
+  scoreBreakdown: ScoreBreakdown;
   snippet: string;
   matchedKeywords: string[];   // words as they appear in the text (the client highlights these)
   matchedQueryWords: string[]; // which query words matched this document
@@ -27,9 +32,14 @@ export interface SearchResponse {
   query: string;
   status: SearchStatus;
   message: string | null;
-  timeMs: number;
+  timeMs: number;              // parse + index lookup + scoring + Merge Sort
   totalResults: number;
-  results: SearchResultItem[];
+  results: SearchResultItem[]; // best match first
+  sort: {
+    algorithm: string;
+    items: number;             // how many results were sorted
+    comparisons: number;       // how many comparisons Merge Sort really made
+  };
   interpretation: {            // "how the engine understood your query"
     words: string[];
     phrases: string[];
@@ -58,14 +68,20 @@ function buildMessage(outcome: SearchOutcome): string | null {
 }
 
 export function searchDocuments(rawQuery: string): SearchResponse {
-  // Real measurement of the search itself (parse -> index lookups -> candidates).
+  // Real measurement of the whole algorithmic pipeline:
+  // parse -> index lookups -> candidates -> scoring -> Merge Sort.
+  const sortStats: SortStats = { comparisons: 0 };
   const start = performance.now();
+
   const outcome = engine.search(rawQuery);
+  const scored = scoreCandidates(outcome.candidates, outcome.resolved);
+  const ranked = sortByScore(scored, sortStats);
+
   const timeMs = Number((performance.now() - start).toFixed(3));
 
-  // Presentation: build one result card per candidate.
+  // Presentation (not timed): build one result card per ranked candidate.
   const results: SearchResultItem[] = [];
-  for (const candidate of outcome.candidates) {
+  for (const { candidate, score, breakdown } of ranked) {
     const doc = getDocumentById(candidate.docId); // HashMap lookup, O(1) average
     if (!doc) continue;
 
@@ -74,10 +90,13 @@ export function searchDocuments(rawQuery: string): SearchResponse {
     const titleHits = findHits(doc.title, matchedTerms);
 
     results.push({
+      rank: results.length + 1,
       docId: doc.id,
       title: doc.title,
       category: doc.category,
       source: doc.source,
+      score,
+      scoreBreakdown: breakdown,
       snippet: buildSnippet(doc.content, contentHits),
       matchedKeywords: Array.from(new Set([...titleHits, ...contentHits].map((h) => h.word))),
       matchedQueryWords: Array.from(new Set(candidate.termMatches.map((m) => m.queryWord))),
@@ -93,6 +112,11 @@ export function searchDocuments(rawQuery: string): SearchResponse {
     timeMs,
     totalResults: results.length,
     results,
+    sort: {
+      algorithm: "Merge Sort",
+      items: scored.length,
+      comparisons: sortStats.comparisons,
+    },
     interpretation: {
       words: outcome.query.words.map((w) => w.original),
       phrases: outcome.query.phrases.map((p) => p.text),
