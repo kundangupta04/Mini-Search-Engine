@@ -6,9 +6,11 @@ import type {
   SuggestionResponse,
 } from "../types";
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, "") ?? "";
+
 /** Fetch JSON and turn server errors ({ error: "..." }) into a readable Error. */
 export async function getJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+  const response = await fetch(API_BASE + url); 
 
   if (!response.ok) {
     let message = `Request failed (${response.status})`;
@@ -52,6 +54,6 @@ export function getStats(): Promise<StatsResponse> {
 }
 
 export async function resetStats(): Promise<void> {
-  const response = await fetch("/api/stats/reset", { method: "POST" });
+  const response = await fetch(API_BASE + "/api/stats/reset", { method: "POST" });
   if (!response.ok) throw new Error(`Request failed (${response.status})`);
 }
