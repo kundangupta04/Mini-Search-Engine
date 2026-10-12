@@ -240,7 +240,7 @@ async function main(): Promise<void> {
     docIds((await search("data")).body)
   );
 
-  const large = await search("data " + Array.from({ length: 30 }, (_, i) => `term${i}`).join(" "));
+  const large = await search("data " + Array.from({ length: 30 }, (_, i) => `t${i}`).join(" "));
   check(
     "edge: large query is truncated but still works",
     [large.status, large.body.status, large.body.interpretation.truncated],
