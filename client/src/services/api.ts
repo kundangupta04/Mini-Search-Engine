@@ -6,6 +6,7 @@ import type {
   SuggestionResponse,
 } from "../types";
 
+
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, "") ?? "";
 
 /** Fetch JSON and turn server errors ({ error: "..." }) into a readable Error. */
